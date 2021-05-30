@@ -11,6 +11,7 @@ class Personaje{
         int getHP();
         void setHP(int);
         void setNombre(string);
+        virtual void shoot();
         virtual void correr();
         virtual void saltar();
         virtual void imprime();
@@ -22,7 +23,7 @@ class Personaje{
 
 Personaje::Personaje(){
     Nombre= "-";
-    HP = 0;
+    HP = 100;
 }
 
 Personaje::Personaje (string name, int hp){ 
@@ -54,6 +55,10 @@ void Personaje::saltar(){
 
 void Personaje::correr(){
     cout << "Correr" << endl;
+}
+
+void Personaje::shoot(){
+    cout << "Atacar" << endl;
 }
 
 //Funcion imprimir

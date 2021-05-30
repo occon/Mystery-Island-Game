@@ -1,5 +1,6 @@
 #ifndef Vikingo_h
 #define Vikingo_h
+#include "Personaje.h"
 
 class Vikingo: public Personaje{
     public:
@@ -50,4 +51,4 @@ void Vikingo::shoot(){
     cout << "Atacar con hacha" << endl;
 }
 
-#endif /* Hechicera_h */
+#endif /* Vikingo_h */

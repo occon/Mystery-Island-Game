@@ -1,60 +1,53 @@
-//
-
 #ifndef Arquero_h
-#define Personaje_h
-using namespace std;
+#define Arquero_h
+#include "Personaje.h"
 
-class Arquero{
+class Arquero: public Personaje{
     public:
-        Personaje();
-        Personaje(string, int);
-        string getNombre()
-    
+        Arquero();
+        Arquero(int, int, string, int);
+        int getArma();
+        int getMascota();
+        void setArma(int);
+        void setMascota(int);
+        void shoot();
     private:
-        string Nombre;
-        int Nivel;
-    
+        int arma;
+        int mascota;
 };
 
-Personaje::Personaje(){
-    Nombre= "-";
-    Nivel = 0;
-}
-
-Personaje::Personaje(string name, int lvl){
-    Nombre= name;
-    Nivel= lvl;
-}
-
 //Getters
-string Personaje::getNombre(){
-    return Nombre;
+
+Arquero::Arquero(): Personaje(){
+    arma= 0;
 }
 
-int Personaje::getNivel(){
-    return Nivel;
+Arquero::Arquero(int weapon, int pet, string n, int healthp): Personaje(n, healthp){
+    arma = weapon;
+    mascota = pet;
+    Nombre= n;
+    HP = healthp;
+}
+//Getters
+int Arquero::getArma(){
+    return arma; 
+}
+
+int Arquero::getMascota(){ 
+    return mascota; 
 }
 
 //Setters
-void Personaje::setNombre(string name){
-    Nombre= name;
+void Arquero::setArma(int weapon){
+    arma = weapon;
+} 
+
+void Arquero::setMascota(int pet){
+    mascota = pet;
 }
 
-void Personaje::setNivel(int lvl){
-    Nivel= lvl;
+void Arquero::shoot(){ 
+    cout << "Tirar flechas" << endl;
 }
 
-void Personaje::saltar(){
-    cout << "Saltar" << endl;
-}
-
-void Personaje::correr(){
-    cout << "Correr" << endl;
-}
-
-//Funcion imprimir
-void Personaje::imprime(){
-    cout << "Personaje" << endl << "Nombre: " << Nombre << endl;
-    cout << "Nivel: " << Nivel << endl;
-}
-#endif /* Personaje_h */
+#endif /* Arquero_h */

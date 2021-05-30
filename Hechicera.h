@@ -1,5 +1,6 @@
 #ifndef Hechicera_h
 #define Hechicera_h
+#include "Personaje.h"
 
 class Hechicera: public Personaje{
     public:
