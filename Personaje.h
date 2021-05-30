@@ -6,30 +6,28 @@ using namespace std;
 class Personaje{
     public:
         Personaje();
-        Personaje(string, int);
+        Personaje(string, int); 
         string getNombre();
-        int getNivel();
-        void setNivel(int);
+        int getHP();
+        void setHP(int);
         void setNombre(string);
-        void correr();
-        void saltar();
-        void imprime();
-        virtual void use();
-        
+        virtual void correr();
+        virtual void saltar();
+        virtual void imprime();
+
     protected:
-        string Nombre;
-        int Nivel;
-    
+        string Nombre; 
+        int HP;
 };
 
 Personaje::Personaje(){
     Nombre= "-";
-    Nivel = 0;
+    HP = 0;
 }
 
-Personaje::Personaje(string name, int lvl){
+Personaje::Personaje (string name, int hp){ 
     Nombre= name;
-    Nivel= lvl;
+    HP= hp;
 }
 
 //Getters
@@ -37,8 +35,8 @@ string Personaje::getNombre(){
     return Nombre;
 }
 
-int Personaje::getNivel(){
-    return Nivel;
+int Personaje::getHP(){
+    return HP; 
 }
 
 //Setters
@@ -46,8 +44,8 @@ void Personaje::setNombre(string name){
     Nombre= name;
 }
 
-void Personaje::setNivel(int lvl){
-    Nivel= lvl;
+void Personaje::setHP(int hp){
+    HP= hp;
 }
 
 void Personaje::saltar(){
@@ -61,6 +59,6 @@ void Personaje::correr(){
 //Funcion imprimir
 void Personaje::imprime(){
     cout << "Personaje" << endl << "Nombre: " << Nombre << endl;
-    cout << "Nivel: " << Nivel << endl;
+    cout << "Nivel: " << HP << endl;
 }
 #endif /* Personaje_h */
