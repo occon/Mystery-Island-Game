@@ -12,8 +12,6 @@ class Personaje{
         void setHP(int);
         void setNombre(string);
         virtual void shoot();
-        virtual void correr();
-        virtual void saltar();
         virtual void imprime();
 
     protected:
@@ -49,13 +47,13 @@ void Personaje::setHP(int hp){
     HP= hp;
 }
 
-void Personaje::saltar(){
-    cout << "Saltar" << endl;
-}
+// void Personaje::saltar(){
+//     cout << "Saltar" << endl;
+// }
 
-void Personaje::correr(){
-    cout << "Correr" << endl;
-}
+// void Personaje::correr(){
+//     cout << "Correr" << endl;
+// }
 
 void Personaje::shoot(){
     cout << "Atacar" << endl;
