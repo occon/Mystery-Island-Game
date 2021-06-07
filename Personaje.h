@@ -62,6 +62,6 @@ void Personaje::shoot(){
 //Funcion imprimir
 void Personaje::imprime(){
     cout << "Personaje" << endl << "Nombre: " << Nombre << endl;
-    cout << "Nivel: " << HP << endl;
+    cout << "Vida: " << HP << endl;
 }
 #endif /* Personaje_h */

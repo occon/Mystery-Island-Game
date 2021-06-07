@@ -52,7 +52,8 @@ int main(){
     Personaje *clasesPersonajes;
     int tamRen = 8, tamCol = 8;
     string Matrizmapa[tamRen][tamCol];
-    mostrarmapa(Matrizmapa, tamRen, tamCol);
+    //mostrarmapa(Matrizmapa, tamRen, tamCol);
+    //Troll  
 
     clasesPersonajes = new Hechicera(0,0,"",100);
     vecPersonajes.push_back(clasesPersonajes);
@@ -64,6 +65,7 @@ int main(){
     for (int i=0; i<vecPersonajes.size();i++){
         vecPersonajes[i]->shoot();
     }
+
 
 
     // mapa();

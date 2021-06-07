@@ -1,5 +1,21 @@
 #include <iostream>
+#include "Personaje.h"
+#include "Hechicera.h" 
+#include "Vikingo.h"
+#include "Arquero.h"
+#include "Mapa.h"
+#include <vector>
 using namespace std;
+
+
+void isTrollHere(string mapa[][8],int Col, int Ren, Personaje Troll){
+
+    if (mapa[5][5] == "o" && Troll.getHP()>0)  {
+        cout << endl << "Cuidado! "<< endl;
+        cout << "Te haz encontrado con un troll "<< endl;
+    }
+}
+
 
 void imprimirMapa(string Mapa[][8]){
     cout << endl << "Mapa"<< endl;
@@ -108,19 +124,22 @@ int main(){
     // MoverOeste(Mapa,Col,Ren);
     // MoverSur(Mapa,Col,Ren);
     // imprimirMapa(mapa);
-    
-   string Mapa[8][8]={
+    string Mapa[8][8]={
         {"-","-","-","-","-","X","X","X"},
-        {"-","X","X","X","X","X","-","-"},
-        {"-","X","-","-","-","-","-","-"},
-        {"-","X","-","-","-","X","X","X"},
+        {"-","-","-","X","X","X","-","-"},
+        {"-","X","X","X","-","-","-","-"},
+        {"-","X","-","-","-","X","X","-"},
         {"X","X","X","X","X","-","-","X"},
         {"-","-","X","X","X","X","X","X"},
         {"-","-","X","-","-","-","-","-"},
         {"X","o","X","-","-","-","-","-"},
     };
     int Ren=7, Col=1, posicion=0;
+
+    Personaje Troll("Troll", 100);
+    
     while (Mapa[0][7]!="o"){
+        isTrollHere(Mapa,Col, Ren, Troll); 
         imprimirMapa(Mapa);
         cout << "A que posicion quieres moverte? [1] ^ [2] v [3] < [4] >" << endl;
 

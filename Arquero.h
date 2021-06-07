@@ -46,6 +46,8 @@ void Arquero::setMascota(int pet){
     mascota = pet;
 }
 
+//Funciones
+
 void Arquero::shoot(){ 
     cout << "Tirar flechas" << endl;
 }
