@@ -1,19 +1,43 @@
 #include <iostream>
+#include <vector>
 #include "Personaje.h"
 #include "Hechicera.h" 
 #include "Vikingo.h"
 #include "Arquero.h"
+#include "Troll.h"
 #include "Mapa.h"
-#include <vector>
+
+
 using namespace std;
 
+/*
+void isKeyHere(string mapa[][8],int Col, int Ren, Key* llave){
+    int resp;
+    if (mapa[3][5] == "o" && llave->getDisponibilidad()==1)  {
+        cout << endl << "Te haz encontrado una llave "<< endl;
+        cout << "Deseas agarrarla?" << endl << "[1]Si [2]No "<< endl;
+        cin >> resp;
 
-void isTrollHere(string mapa[][8],int Col, int Ren, Personaje Troll){
+        if (resp == 1){
+            llave->setDisponibilidad(0);
+            cout << "a" << endl;
+        }
+    }
+}
+*/
 
-    if (mapa[5][5] == "o" && Troll.getHP()>0)  {
+Troll isTrollHere(string mapa[][8],int Col, int Ren, Troll t){
+    if (mapa[5][5] == "o" && t.getHP()>0)  {
         cout << endl << "Cuidado! "<< endl;
         cout << "Te haz encontrado con un troll "<< endl;
+        t.setHP(0);
+        cout << t.getHP() << endl;
     }
+
+    else if (mapa[5][5] == "o" && t.getHP()<=0){
+        cout << endl << "Ya no hay nada aquí, haz matado al troll" << endl;
+    }
+    return t;
 }
 
 
@@ -128,7 +152,7 @@ int main(){
         {"-","-","-","-","-","X","X","X"},
         {"-","-","-","X","X","X","-","-"},
         {"-","X","X","X","-","-","-","-"},
-        {"-","X","-","-","-","X","X","-"},
+        {"-","X","-","-","-","X","X","X"},
         {"X","X","X","X","X","-","-","X"},
         {"-","-","X","X","X","X","X","X"},
         {"-","-","X","-","-","-","-","-"},
@@ -136,11 +160,15 @@ int main(){
     };
     int Ren=7, Col=1, posicion=0;
 
-    Personaje Troll("Troll", 100);
-    
+    Troll t("Troll","hacha",100);
+    Key* llave;
     while (Mapa[0][7]!="o"){
-        isTrollHere(Mapa,Col, Ren, Troll); 
+        t=isTrollHere(Mapa,Col, Ren, t); 
+        llave->use();
+        //isKeyHere(Mapa,Col, Ren, llave);
+
         imprimirMapa(Mapa);
+        //cout << llave->getDisponibilidad() << endl;
         cout << "A que posicion quieres moverte? [1] ^ [2] v [3] < [4] >" << endl;
 
         cin >> posicion;

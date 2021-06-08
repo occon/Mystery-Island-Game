@@ -13,31 +13,36 @@ class Items{
 
     public:
         Items();
-        Items(int, string, string, int);
+        Items( string, string, int);
         virtual void use(); //virtual solo en declaracion - Función polimórfica
-        int getLvl(){return level;};
         string getName(){return name;};
         string getDescription(){return description;};
-        int getHP(){return HP;};
+        int getDisponibilidad(){return disponibilidad;};
+        void setDisponibilidad(int);
     protected:
-        int level; 
         string name; 
         string description;
-        int HP;
-        
+        int disponibilidad;
+
 };
+
 Items::Items(){
-    level=0; 
     name=""; 
     description="";
-    HP=1000;
+    disponibilidad=1;
 }
-Items::Items(int lvl, string n, string descr, int healthp){
-    level= lvl;
+Items::Items(string n, string descr, int disp){
     name= n;
     description= descr;
-    HP= healthp;
+    disponibilidad= disp;
 }
+
+
+void Items::setDisponibilidad(int disp){
+    disponibilidad= disp;
+}
+
+
 void Items::use(){
     cout<<"Ese USE no se debe llamar de la clase base"<<endl;
 }

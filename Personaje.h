@@ -2,6 +2,7 @@
 #ifndef Personaje_h
 #define Personaje_h
 using namespace std;
+#include "ItemKey.h"
 
 class Personaje{
     public:

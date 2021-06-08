@@ -11,19 +11,22 @@
 class Key:public Items{
     public:
         Key();
-        Key(int,int, string, string, int);
+        Key(string, string, int);
         void use();
     private:
-        int KeyType; // {Health, Energy, Wisdom, Death}
 };
 
-Key::Key() : Items(){
-    KeyType = 0;
+Key::Key(): Items(){
+    name= "Llave Final";
+    description= "Esta es una llave, te servira para abrir el tesoro final";
+    
 };
-Key::Key(int p, int lvl, string n, string descr, int healthp):Items(lvl,n,descr,healthp){ 
-    KeyType= p;
+Key::Key(string n, string descr, int dkey):Items(n, descr, dkey){ 
+    disponibilidad= dkey;
+    name = n;
+    description= descr;
     
 }
 void Key::use(){
-    cout << "Acabas de agarrar una LLAVE, usala para abrir el tesoro" << endl;
+    cout << "Acabas de agarrar una LLAVE" << endl;
 }

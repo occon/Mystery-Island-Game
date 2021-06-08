@@ -1,39 +1,39 @@
 #ifndef Troll_h
 #define Troll_h
-#include "Troll.h"
+#include "Personaje.h"
 
+using namespace std;
 class Troll: public Personaje{
     public:
         Troll();
-        Troll(int, string, int);
-        int getArma();
-        void setArma(int);
-        void setMascota(int);
+        Troll(string, string, int);
+        string getArma();
+        void setArma(string);
         void shoot();
     private:
-        int arma;
+        string arma;
 };
 
 //Getters
 
 Troll::Troll(): Personaje(){
-    arma= 0;
 }
 
-Troll::Troll(int weapon, string n, int healthp): Personaje(n, healthp){
+Troll::Troll(string weapon, string n, int healthp):  Personaje(n, healthp){
+    Nombre = n;
     arma = weapon;
-    Nombre= n;
-    HP = healthp;
+     HP = healthp;
+
 }
 //Getters
-int Troll::getArma(){
+string Troll::getArma(){
     return arma; 
 }
 
 
 
 //Setters
-void Troll::setArma(int weapon){
+void Troll::setArma(string weapon){
     arma = weapon;
 } 
 
