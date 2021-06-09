@@ -7,13 +7,10 @@ class Vikingo: public Personaje{
         Vikingo();
         Vikingo(int, int, string, int);
         int getArma();
-        int getMascota();
         void setArma(int);
-        void setMascota(int);
         void shoot();
     private:
         int arma;
-        int mascota;
 };
 
 //Getters
@@ -22,7 +19,7 @@ Vikingo::Vikingo(): Personaje(){
     arma= 0;
 }
 
-Vikingo::Vikingo(int weapon, int pet, string n, int healthp): Personaje(n, healthp){
+Vikingo::Vikingo(int weapon, int pet, string n, int healthp): Personaje(n, healthp, pet){
     arma = weapon;
     mascota = pet;
     Nombre= n;
@@ -33,18 +30,12 @@ int Vikingo::getArma(){
     return arma; 
 }
 
-int Vikingo::getMascota(){ 
-    return mascota; 
-}
+
 
 //Setters
 void Vikingo::setArma(int weapon){
     arma = weapon;
 } 
-
-void Vikingo::setMascota(int pet){
-    mascota = pet;
-}
 
 
 void Vikingo::shoot(){ 

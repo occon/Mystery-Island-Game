@@ -8,7 +8,7 @@
 #ifndef Inventario_h
 #define Inventario_h
 
-#include "Key.h"
+#include "ItemKey.h"
 #include "Items.h"
 #include <vector>
 

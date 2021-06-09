@@ -7,9 +7,7 @@ class Hechicera: public Personaje{
         Hechicera();
         Hechicera(int, int, string, int);
         int getArma();
-        int getMascota();
         void setArma(int);
-        void setMascota(int);
         void shoot();
     private:
         int arma;
@@ -22,7 +20,7 @@ Hechicera::Hechicera(): Personaje(){
     arma= 0;
 }
 
-Hechicera::Hechicera(int weapon, int pet, string n, int healthp): Personaje(n, healthp){
+Hechicera::Hechicera(int weapon, int pet, string n, int healthp): Personaje(n, healthp, pet){
     arma = weapon;
     mascota = pet;
     Nombre= n;
@@ -33,18 +31,11 @@ int Hechicera::getArma(){
     return arma; 
 }
 
-int Hechicera::getMascota(){ 
-    return mascota; 
-}
 
 //Setters
 void Hechicera::setArma(int weapon){
     arma = weapon;
 } 
-
-void Hechicera::setMascota(int pet){
-    mascota = pet;
-}
 
 
 void Hechicera::shoot(){ 

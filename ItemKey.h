@@ -17,7 +17,7 @@ class Key:public Items{
 };
 
 Key::Key(): Items(){
-    name= "Llave Final";
+    name= "Llave";
     description= "Esta es una llave, te servira para abrir el tesoro final";
     
 };
@@ -28,5 +28,5 @@ Key::Key(string n, string descr, int dkey):Items(n, descr, dkey){
     
 }
 void Key::use(){
-    cout << "Acabas de agarrar una LLAVE" << endl;
+    cout << "Nombre Item: "  << endl << "Descripcion: " << description << endl;
 }

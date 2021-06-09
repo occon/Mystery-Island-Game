@@ -6,10 +6,10 @@ using namespace std;
 class Troll: public Personaje{
     public:
         Troll();
-        Troll(string, string, int);
+        Troll(string, string, int, int);
         string getArma();
         void setArma(string);
-        void shoot();
+        void shoot(int);
     private:
         string arma;
 };
@@ -17,13 +17,17 @@ class Troll: public Personaje{
 //Getters
 
 Troll::Troll(): Personaje(){
+    Nombre = "Troll";
+    HP= 100;
+    arma= "Hacha";
+    mascota = 0;
 }
 
-Troll::Troll(string weapon, string n, int healthp):  Personaje(n, healthp){
+Troll::Troll(string weapon, string n, int healthp, int pet):  Personaje(n, healthp, pet){
     Nombre = n;
     arma = weapon;
-     HP = healthp;
-
+    HP = healthp;
+    mascota = pet;
 }
 //Getters
 string Troll::getArma(){
@@ -37,9 +41,10 @@ void Troll::setArma(string weapon){
     arma = weapon;
 } 
 
+//
 
-void Troll::shoot(){ 
-    cout << "Tirar golpe" << endl;
+void Troll::shoot(int n){ 
+    cout << "Te ha golpeado el troll y te ha quitado " << n << "puntos de vida" << endl;
 }
 
 #endif /* Troll_h */
