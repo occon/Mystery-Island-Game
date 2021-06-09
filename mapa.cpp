@@ -5,6 +5,7 @@
 #include "Vikingo.h"
 #include "Arquero.h"
 #include "Troll.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -12,40 +13,47 @@ using namespace std;
 void isFenixHere(string mapa[][8],int Col, int Ren, Personaje* player){
     int resp;
     if (mapa[5][6] == "o" && player->getMascota()==0){
-        cout << endl << "Te haz encontrado con un fenix"<< endl;
+        cout << endl << "Te has encontrado con un fenix"<< endl;
         cout << "Deseas agarrarlo?" << endl << "[1]Si [2]No "<< endl;
         cin >> resp;
         if (resp==1){
             player->setMascota(1);
-            cout << "Haz agarrado un fenix" << endl;
+            cout << "Has agarrado un fenix" << endl;
+            system("pause");
         }
         else{
             cout << "Sigue tu camino" << endl;
+            system("pause");
         }
     }
         
     else if (mapa[5][6] == "o"){
-        cout << "Ya agarraste lo que habia aqui" << endl;
+        cout << "Ya agarraste lo que habia aqui." << endl;
+        system("pause");
     }
 }
 
 void isKeyHere(string mapa[][8],int Col, int Ren, Personaje* player, Items* llave){
     int respuesta;
     if (mapa[3][5] == "o" && llave->getDisponibilidad()==1){
-        cout << "Haz encontrado una llave! Deseas agarrarla? [1]Si [2]No" << endl;
+        cout << "Has encontrado una llave! Deseas agarrarla? [1]Si [2]No" << endl;
         cin >> respuesta;
         if (respuesta==1){
             player->AdicionaLlave(llave); 
             llave->setDisponibilidad(0);
+            cout << "Has agarrado una llave." << endl;
+            system("pause");
         }
         else{
             cout << "Continua tu camino" << endl;
+            system("pause");
         }
 
             
     }
     else if (mapa[3][5]=="o"){
         cout << "Ya agarraste lo que habia aqui" << endl;
+        system("pause");
     }
     //player->showInventario();
 }
@@ -56,8 +64,10 @@ int getRand(int n) {
 
 void isTrollHere(string mapa[][8],int Col, int Ren, Personaje* t, Personaje* player){
     if (mapa[5][5] == "o" && t->getHP()>0)  {
+        system("cls");
         cout << endl << "Cuidado! "<< endl;
-        cout << "Te haz encontrado con un troll "<< endl;
+        cout << "Te has encontrado con un troll "<< endl;
+        system("pause");
         int hits = 3;
         int golpe = 0;
         while (t->getHP()>0 && player->getHP()>0){
@@ -71,16 +81,19 @@ void isTrollHere(string mapa[][8],int Col, int Ren, Personaje* t, Personaje* pla
             int vidatroll= t->getHP();
             t->setHP(vidatroll-golpe);
             player->shoot(golpe);
-            cout << t->getHP() << endl;
-            cout << player->getHP();
+            // cout << t->getHP() << endl;
+            // cout << player->getHP();
+            system("pause");
         }
         player->setProgreso(20);
         //player->setHP(0);
-        cout << "Haz sobrevivido al ataque del troll!" << endl;
+        cout << "Has sobrevivido al ataque del troll con " << player->getHP() << " de vida." << endl;
+        system("pause");
     }
 
     else if (mapa[5][5] == "o" && t->getHP()<=0){
         cout << endl << "Ya no hay nada aquí, has matado al troll" << endl;
+        system("pause");
     }
 }
 
@@ -92,11 +105,13 @@ void ganarCofre(string mapa[][8],int Col, int Ren, Personaje* player, Items* lla
     }
     else if (mapa[0][7]=="o"){
         cout << "No tienes la llave y no puedes abrir el cofre, sigue tu camino" << endl;
+        system("pause");
     }
 
 }
 
 void imprimirMapa(string Mapa[][8]){
+    system("cls");
     cout << endl << "Mapa"<< endl;
     cout << "  ------------------" << endl;
     for (int ren = 0; ren < 8; ren++) {
@@ -105,6 +120,21 @@ void imprimirMapa(string Mapa[][8]){
             cout << Mapa[ren][col] << " ";
         }
         cout << " | " ;
+        if(ren == 1){
+            cout << "   Controles";
+        };
+        if(ren == 2){
+            cout << "   [W] ^";
+        };
+        if(ren == 3){
+            cout << "   [A] <";
+        };
+        if(ren == 4){
+            cout << "   [S] v";
+        };
+        if(ren == 5){
+            cout << "   [D] >";
+        };
         cout << endl;
     }
     cout << "  ------------------" << endl;
@@ -113,6 +143,7 @@ void imprimirMapa(string Mapa[][8]){
 int MoverNorte(string mapa[][8], int Col, int Ren){
     if (mapa[Ren-1][Col]=="-"){
         cout << "Esta parte del mapa no es accesible" << endl;
+        system("pause");
     }
     else if(mapa[Ren-1][Col]=="X"){
         cout << "Es parte del mapa" << endl;
@@ -122,6 +153,7 @@ int MoverNorte(string mapa[][8], int Col, int Ren){
     }
     else{
         cout << "No es parte del mapa" << endl;
+        system("pause");
     }
     // imprimirMapa(mapa);
     return Ren;
@@ -130,6 +162,7 @@ int MoverNorte(string mapa[][8], int Col, int Ren){
 int MoverOeste(string mapa[][8], int Col, int Ren){
     if (mapa[Ren][Col-1]=="-"){
         cout << "No es parte del mapa" << endl;
+        system("pause");
     }
     else if(mapa[Ren][Col-1]=="X"){
         cout << "Es parte del mapa" << endl;
@@ -139,6 +172,7 @@ int MoverOeste(string mapa[][8], int Col, int Ren){
     }
     else{
         cout << "No es parte del mapa" << endl;
+        system("pause");
     }
     // imprimirMapa(mapa);
     return Col;
@@ -147,6 +181,7 @@ int MoverOeste(string mapa[][8], int Col, int Ren){
 int MoverEste(string mapa[][8], int Col, int Ren){
     if (mapa[Ren][Col+1]=="-"){
         cout << "No es parte del mapa" << endl;
+        system("pause");
     }
     else if(mapa[Ren][Col+1]=="X"){
         cout << "Es parte del mapa" << endl;
@@ -156,6 +191,7 @@ int MoverEste(string mapa[][8], int Col, int Ren){
     }
     else{
         cout << "No es parte del mapa" << endl;
+        system("pause");
     }
     // imprimirMapa(mapa);
     return Col;
@@ -165,6 +201,7 @@ int MoverEste(string mapa[][8], int Col, int Ren){
 int MoverSur(string mapa[][8], int Col, int Ren){
     if (mapa[Ren+1][Col]=="-"){
         cout << "Esta parte del mapa no es accesible" << endl;
+        system("pause");
     }
     else if(mapa[Ren+1][Col]=="X"){
         cout << "Es parte del mapa" << endl;
@@ -174,6 +211,7 @@ int MoverSur(string mapa[][8], int Col, int Ren){
     }
     else{
         cout << "No es parte del mapa" << endl;
+        system("pause");
     }
     // imprimirMapa(mapa);
     return Ren;
@@ -198,7 +236,8 @@ int main(){
         {"-","-","X","-","-","-","-","-"},
         {"X","o","X","-","-","-","-","-"},
     };
-    int Ren=7, Col=1, posicion=0; 
+    int Ren=7, Col=1;
+    char posicion; 
     Personaje *t = new Troll();
     Personaje *a = new Arquero();
     Personaje *h = new Hechicera();
@@ -228,22 +267,22 @@ int main(){
         isKeyHere(Mapa,Col, Ren, player, llaveRecolectada);
 
         imprimirMapa(Mapa);
-        cout << "A que posicion quieres moverte? [1] ^ [2] v [3] < [4] >" << endl;
+        // cout << "A que posicion quieres moverte? [1] ^ [2] v [3] < [4] >" << endl;
 
         cin >> posicion;
-        if (posicion==1){
+        if (posicion == 'w' || posicion == 'W'){
             Ren = MoverNorte(Mapa,Col,Ren);
             cout << Col << " " << Ren << endl;
         }
-        else if (posicion==2){
+        else if (posicion == 's' || posicion == 'S'){
             Ren = MoverSur(Mapa,Col,Ren);
             cout << Col << " " << Ren << endl;
         }
-        else if (posicion==3){
+        else if (posicion == 'a' || posicion == 'A'){
             Col = MoverOeste(Mapa,Col,Ren);
             cout << Col << " " << Ren << endl;
         }
-        else if (posicion==4){
+        else if (posicion == 'd' || posicion == 'D'){
             Col = MoverEste(Mapa,Col,Ren);
             cout << Col << " " << Ren << endl;
         }
@@ -253,7 +292,7 @@ int main(){
             ganarCofre(Mapa, Col, Ren, player, llaveRecolectada);
             }
         else {
-            cout << "Haz muerto, gracias por jugar" << endl;
+            cout << "Has muerto, gracias por jugar" << endl;
         }
     }
 
