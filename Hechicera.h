@@ -5,26 +5,30 @@
 class Hechicera: public Personaje{
     public:
         Hechicera();
-        Hechicera(int, int, string, int);
+        Hechicera(int, int, string, int, int);
         int getArma();
         void setArma(int);
         void shoot();
     private:
         int arma;
-        int mascota;
 };
 
 //Getters
 
 Hechicera::Hechicera(): Personaje(){
     arma= 0;
+    mascota = 0;
+    Nombre= "";
+    HP= 100;
+    progreso=0;
 }
 
-Hechicera::Hechicera(int weapon, int pet, string n, int healthp): Personaje(n, healthp, pet){
+Hechicera::Hechicera(int weapon, int pet, string n, int healthp, int prog): Personaje(n, healthp, pet, prog){
     arma = weapon;
     mascota = pet;
     Nombre= n;
     HP = healthp;
+    progreso= prog;
 }
 //Getters
 int Hechicera::getArma(){

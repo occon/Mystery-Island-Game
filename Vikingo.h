@@ -5,7 +5,7 @@
 class Vikingo: public Personaje{
     public:
         Vikingo();
-        Vikingo(int, int, string, int);
+        Vikingo(int, int, string, int, int);
         int getArma();
         void setArma(int);
         void shoot();
@@ -16,14 +16,19 @@ class Vikingo: public Personaje{
 //Getters
 
 Vikingo::Vikingo(): Personaje(){
+    mascota= 0;
     arma= 0;
+    Nombre= "";
+    HP=100;
+    progreso=0;
 }
 
-Vikingo::Vikingo(int weapon, int pet, string n, int healthp): Personaje(n, healthp, pet){
+Vikingo::Vikingo(int weapon, int pet, string n, int healthp, int prog): Personaje(n, healthp, pet,prog){
     arma = weapon;
     mascota = pet;
     Nombre= n;
     HP = healthp;
+    progreso = prog;
 }
 //Getters
 int Vikingo::getArma(){

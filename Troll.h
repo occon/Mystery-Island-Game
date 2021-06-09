@@ -6,7 +6,7 @@ using namespace std;
 class Troll: public Personaje{
     public:
         Troll();
-        Troll(string, string, int, int);
+        Troll(string, string, int, int,int);
         string getArma();
         void setArma(string);
         void shoot(int);
@@ -23,11 +23,12 @@ Troll::Troll(): Personaje(){
     mascota = 0;
 }
 
-Troll::Troll(string weapon, string n, int healthp, int pet):  Personaje(n, healthp, pet){
+Troll::Troll(string weapon, string n, int healthp, int pet, int prog):  Personaje(n, healthp, pet, prog){
     Nombre = n;
     arma = weapon;
     HP = healthp;
     mascota = pet;
+    progreso= prog;
 }
 //Getters
 string Troll::getArma(){

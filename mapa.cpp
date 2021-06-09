@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 void isFenixHere(string mapa[][8],int Col, int Ren, Personaje* player){
     int resp;
     if (mapa[5][6] == "o" && player->getMascota()==0){
@@ -46,7 +47,7 @@ void isKeyHere(string mapa[][8],int Col, int Ren, Personaje* player, Items* llav
     else if (mapa[3][5]=="o"){
         cout << "Ya agarraste lo que habia aqui" << endl;
     }
-    player->showInventario();
+    //player->showInventario();
 }
 
 int getRand(int n) {
@@ -64,14 +65,25 @@ void isTrollHere(string mapa[][8],int Col, int Ren, Personaje* t, Personaje* pla
             //t->shoot(golpe);
 
         }
-        
+        player->setHP(0);
     }
 
     else if (mapa[5][5] == "o" && t->getHP()<=0){
-        cout << endl << "Ya no hay nada aquí, haz matado al troll" << endl;
+        cout << endl << "Ya no hay nada aquí, has matado al troll" << endl;
     }
 }
 
+void ganarCofre(string mapa[][8],int Col, int Ren, Personaje* player, Items* llave){
+    if (mapa[0][7] == "o" && llave->getDisponibilidad()==0){
+        cout << "¡Encontraste el tesoro y tienes la llave!" << endl;
+        cout << "HAS GANADO" << endl;
+        player->setProgreso(100);
+    }
+    else if (mapa[0][7]=="o"){
+        cout << "No tienes la llave y no puedes abrir el cofre, sigue tu camino" << endl;
+    }
+
+}
 
 void imprimirMapa(string Mapa[][8]){
     cout << endl << "Mapa"<< endl;
@@ -158,6 +170,7 @@ int MoverSur(string mapa[][8], int Col, int Ren){
 
 int main(){
     int opcion=1;
+    int i=0;
     string nombre;
     // MoverNorte(Mapa,Col,Ren);
     // MoverEste(Mapa,Col,Ren);
@@ -195,10 +208,12 @@ int main(){
     cin >> nombre;
     player->setNombre(nombre);
     player->imprime();*/
+    player->getProgreso();
+    cout << player->getHP();
     Items *llaveRecolectada = new Key();   
-    while (Mapa[0][7]!="o"){
+    ganarCofre(Mapa, Col, Ren, player, llaveRecolectada);
+    while (player->getProgreso()!=100 && player->getHP()>0){
         isFenixHere(Mapa,Col, Ren, player);
-        isTrollHere(Mapa,Col, Ren, t, player); 
         isKeyHere(Mapa,Col, Ren, player, llaveRecolectada);
 
         imprimirMapa(Mapa);
@@ -221,9 +236,15 @@ int main(){
             Col = MoverEste(Mapa,Col,Ren);
             cout << Col << " " << Ren << endl;
         }
-    }
-    cout << "Haz ganado!" << endl;
+        isTrollHere(Mapa,Col, Ren, t, player);
 
+        if (player->getHP()>0){
+            ganarCofre(Mapa, Col, Ren, player, llaveRecolectada);
+            }
+        else {
+            cout << "Haz muerto, gracias por jugar" << endl;
+        }
+    }
 
     return 0;
 }

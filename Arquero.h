@@ -5,7 +5,7 @@
 class Arquero: public Personaje{
     public:
         Arquero();
-        Arquero(int, int, string, int);
+        Arquero(int, int, string, int, int);
         int getArma();
         void setArma(int);
         void shoot();
@@ -19,14 +19,16 @@ Arquero::Arquero(): Personaje(){
     arma= 0;
     mascota = 0;
     Nombre= "";
-    HP= 0;
+    HP= 100;
+    progreso=0;
 }
 
-Arquero::Arquero(int weapon, int pet, string n, int healthp): Personaje(n, healthp,pet){
+Arquero::Arquero(int weapon, int pet, string n, int healthp, int prog): Personaje(n, healthp,pet,prog){
     arma = weapon;
     mascota = pet;
     Nombre= n;
     HP = healthp;
+    progreso= prog;
 }
 //Getters
 int Arquero::getArma(){

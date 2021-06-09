@@ -25,8 +25,8 @@ Key::Key(string n, string descr, int dkey):Items(n, descr, dkey){
     disponibilidad= dkey;
     name = n;
     description= descr;
-    
 }
+
 void Key::use(){
-    cout << "Nombre Item: "  << endl << "Descripcion: " << description << endl;
+    cout << "Nombre Item: "  << name << endl << "Descripcion: " << description << endl;
 }
