@@ -8,7 +8,7 @@ class Vikingo: public Personaje{
         Vikingo(int, int, string, int, int);
         int getArma();
         void setArma(int);
-        void shoot();
+        void shoot(int);
     private:
         int arma;
 };
@@ -43,8 +43,8 @@ void Vikingo::setArma(int weapon){
 } 
 
 
-void Vikingo::shoot(){ 
-    cout << "Atacar con hacha" << endl;
+void Vikingo::shoot(int n){ 
+    cout << "Has atacado con tu hacha y has quitado " << n << "de vida!"<< endl;
 }
 
 #endif /* Vikingo_h */

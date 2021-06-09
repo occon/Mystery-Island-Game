@@ -1,10 +1,10 @@
 #include <iostream>
+#include <vector>
 #include "Personaje.h"
 #include "Hechicera.h" 
 #include "Vikingo.h"
 #include "Arquero.h"
-#include "Mapa.h"
-#include <vector>
+#include "Troll.h"
 
 using namespace std;
 
@@ -48,23 +48,34 @@ void mostrarmapa(int tamRen, int tamCol, string mapa[tamRen][tamCol]){
 // }
 
 int main(){
+    int opcion;
+    string nombre;
     vector <Personaje*> vecPersonajes;
     Personaje *clasesPersonajes;
     int tamRen = 8, tamCol = 8;
     string Matrizmapa[tamRen][tamCol];
     //mostrarmapa(Matrizmapa, tamRen, tamCol);
     //Troll  
-
-    clasesPersonajes = new Hechicera(0,0,"",100);
-    vecPersonajes.push_back(clasesPersonajes);
-    clasesPersonajes = new Arquero(0,0,"",100);
-    vecPersonajes.push_back(clasesPersonajes);
-    clasesPersonajes = new Vikingo(0,0,"",100);
-    vecPersonajes.push_back(clasesPersonajes);
-    
-    for (int i=0; i<vecPersonajes.size();i++){
-        vecPersonajes[i]->shoot();
+    Personaje *t = new Troll();
+    Personaje *a = new Arquero();
+    Personaje *h = new Hechicera();
+    Personaje *v = new Vikingo();
+    Personaje *player;
+    cout << "Que personaje desea usar? [1]Arquero [2]Hechicero [3]Vikingo" << endl;
+    cin >> opcion;
+    if (opcion==1){
+        player = a;
     }
+    else if (opcion==2){
+        player = h;
+    }
+    else if (opcion==3){
+         player = v;
+    }
+    cout << "Como quieres que se llame tu personaje?" << endl;
+    cin >> nombre;
+    player->setNombre(nombre);
+    player->imprime();
 
 
 

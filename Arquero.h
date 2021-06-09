@@ -8,7 +8,7 @@ class Arquero: public Personaje{
         Arquero(int, int, string, int, int);
         int getArma();
         void setArma(int);
-        void shoot();
+        void shoot(int);
     private:
         int arma;
 };
@@ -44,8 +44,8 @@ void Arquero::setArma(int weapon){
 
 //Funciones
 
-void Arquero::shoot(){ 
-    cout << "Tirar flechas" << endl;
+void Arquero::shoot(int n){ 
+    cout << "Estas disparando flechas y le has quitado " << n << "de vida!" << endl;
 }
 
 #endif /* Arquero_h */

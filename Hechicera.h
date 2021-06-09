@@ -8,7 +8,7 @@ class Hechicera: public Personaje{
         Hechicera(int, int, string, int, int);
         int getArma();
         void setArma(int);
-        void shoot();
+        void shoot(int);
     private:
         int arma;
 };
@@ -42,8 +42,8 @@ void Hechicera::setArma(int weapon){
 } 
 
 
-void Hechicera::shoot(){ 
-    cout << "Disparar hechizos" << endl;
+void Hechicera::shoot(int n){ 
+    cout << "Has atacado con tus hechizos y has quitado " << n << " de vida!"<< endl;
 }
 
 #endif /* Hechicera_h */

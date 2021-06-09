@@ -17,7 +17,7 @@ class Personaje{
         int getMascota();
         void AdicionaLlave(Items*);
         void showInventario();
-        virtual void shoot();
+        virtual void shoot(int);
         virtual void imprime();
 
     protected:
@@ -74,7 +74,7 @@ void Personaje::setMascota(int pet){
 void Personaje::setProgreso(int prog){
     progreso= prog;
 }
-void Personaje::shoot(){
+void Personaje::shoot(int n){
     cout << "Atacar" << endl;
 }
 

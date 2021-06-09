@@ -45,7 +45,7 @@ void Troll::setArma(string weapon){
 //
 
 void Troll::shoot(int n){ 
-    cout << "Te ha golpeado el troll y te ha quitado " << n << "puntos de vida" << endl;
+    cout << "Te ha golpeado el troll y te ha quitado " << n << " puntos de vida" << endl;
 }
 
 #endif /* Troll_h */

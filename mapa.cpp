@@ -60,12 +60,23 @@ void isTrollHere(string mapa[][8],int Col, int Ren, Personaje* t, Personaje* pla
         cout << "Te haz encontrado con un troll "<< endl;
         int hits = 3;
         int golpe = 0;
-        for (int i=0; i<hits; i++){
-            golpe= getRand(10);
-            //t->shoot(golpe);
-
+        while (t->getHP()>0 && player->getHP()>0){
+            //Golpe de troll
+            golpe= getRand(20);
+            int vidaplayer= player->getHP();
+            player->setHP(vidaplayer-golpe);
+            t->shoot(golpe);
+            //Golpe jugador
+            golpe=getRand(20);
+            int vidatroll= t->getHP();
+            t->setHP(vidatroll-golpe);
+            player->shoot(golpe);
+            cout << t->getHP() << endl;
+            cout << player->getHP();
         }
-        player->setHP(0);
+        player->setProgreso(20);
+        //player->setHP(0);
+        cout << "Haz sobrevivido al ataque del troll!" << endl;
     }
 
     else if (mapa[5][5] == "o" && t->getHP()<=0){
