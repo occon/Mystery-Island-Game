@@ -45,6 +45,6 @@ void Vikingo::setArma(int weapon){
 
 void Vikingo::shoot(int n){ 
     cout << "Has atacado con tu hacha y has quitado " << n << " de vida!"<< endl;
-}
+} 
 
 #endif /* Vikingo_h */

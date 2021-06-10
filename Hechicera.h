@@ -13,7 +13,7 @@ class Hechicera: public Personaje{
         int arma;
 };
 
-//Getters
+//Getters 
 
 Hechicera::Hechicera(): Personaje(){
     arma= 0;
