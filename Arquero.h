@@ -45,7 +45,7 @@ void Arquero::setArma(int weapon){
 //Funciones
 
 void Arquero::shoot(int n){ 
-    cout << "Estas disparando flechas y le has quitado " << n << "de vida!" << endl;
+    cout << "Estas disparando flechas y le has quitado " << n << " de vida!" << endl;
 }
 
 #endif /* Arquero_h */

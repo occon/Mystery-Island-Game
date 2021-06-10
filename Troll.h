@@ -19,7 +19,7 @@ class Troll: public Personaje{
 Troll::Troll(): Personaje(){
     Nombre = "Troll";
     HP= 100;
-    arma= "Hacha";
+    arma= "machete";
     mascota = 0;
 }
 
@@ -45,7 +45,7 @@ void Troll::setArma(string weapon){
 //
 
 void Troll::shoot(int n){ 
-    cout << "Te ha golpeado el troll y te ha quitado " << n << " puntos de vida" << endl;
-}
+    cout << "Te ha golpeado el troll y te ha quitado " << n << " puntos de vida con su " << arma << endl;
+} 
 
 #endif /* Troll_h */
